@@ -1,0 +1,23 @@
+{
+  "utilisateurs": [
+    {
+      "id": "1",
+      "nom": "Ben Mohammed",
+      "prenom": "Mohammed",
+      "actif": true
+    },
+    {
+      "id": "2",
+      "nom": "Ben Ali",
+      "prenom": "Ahmed",
+      "actif": false
+    },
+    {
+      "id": "3",
+      "nom": "Trabelsi",
+      "prenom": "Mariem",
+      "actif": true
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

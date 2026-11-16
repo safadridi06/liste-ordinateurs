@@ -1,0 +1,94 @@
+
+<script setup>
+import { ref } from 'vue'
+
+const nom = ref('')
+const prenom = ref('')
+
+async function ajouterUtilisateur() {
+  const utilisateur = {
+    nom: nom.value,
+    prenom: prenom.value
+  }
+
+  await fetch('http://localhost:3000/utilisateurs', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(utilisateur)
+  })
+
+  nom.value = ''
+  prenom.value = ''
+
+  alert('Utilisateur ajouté avec succès')
+}
+</script>
+
+<template>
+  <div class="container">
+    <h1>Ajouter un utilisateur</h1>
+
+    <form @submit.prevent="ajouterUtilisateur">
+      <label>Nom :</label>
+      <input type="text" v-model="nom" required>
+
+      <br><br>
+
+      <label>Prénom :</label>
+      <input type="text" v-model="prenom" required>
+
+      <br><br>
+
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+</template>
+
+<style scoped>
+.container {
+  width: 80%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 25px;
+}
+
+form {
+  width: 350px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 9px 18px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2176ad;
+}
+</style>
